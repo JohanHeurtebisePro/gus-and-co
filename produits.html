@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="logocoeur.png">
+    <link rel="apple-touch-icon" href="logocoeur.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Gus&Co | Shop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS SPÉCIFIQUE PAGE CATALOGUE */
+        .nav-logo-img { filter: invert(1); }
+
+        .catalog-section {
+            padding: 9rem 4rem 6rem;
+            min-height: 100svh;
+        }
+        .catalog-header {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+        .catalog-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+        .catalog-header p { color: var(--text-muted); font-size: 1rem; }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .catalog-card { display: block; text-decoration: none; cursor: pointer; }
+        .catalog-img {
+            width: 100%;
+            height: 480px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 1.5rem;
+            background: #222;
+        }
+        .catalog-img img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            display: block;
+        }
+        .catalog-card:hover .catalog-img img { transform: scale(1.05); }
+
+        .catalog-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-top: 0.8rem;
+            border-top: 1px solid transparent;
+            transition: border-color 0.3s;
+            gap: 1rem;
+        }
+        .catalog-card:hover .catalog-info { border-top-color: var(--border-color); }
+        .info-left h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            color: var(--text-main);
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        .info-left .cat {
+            font-size: 0.78rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .catalog-price {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-main);
+            font-weight: 600;
+            white-space: nowrap;
+            font-size: 1rem;
+        }
+
+        /* Responsive catalogue */
+        @media (max-width: 1024px) {
+            .catalog-section { padding: 7rem 2.5rem 4rem; }
+            .catalog-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 3rem 1.5rem; }
+            .catalog-img { height: 400px; }
+        }
+        @media (max-width: 768px) {
+            .catalog-section { padding: 6rem 1.5rem 3rem; }
+            .catalog-header { margin-bottom: 3rem; }
+            .catalog-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem 1rem; }
+            .catalog-img { height: 44vw; min-height: 160px; }
+            .info-left h3 { font-size: 0.9rem; }
+            .info-left .cat { font-size: 0.7rem; }
+        }
+        @media (max-width: 480px) {
+            .catalog-section { padding: 5rem 1.2rem 3rem; }
+            .catalog-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .catalog-img { height: 72vw; }
+            .info-left h3 { font-size: 1rem; }
+        }
+        @media (hover: none) and (pointer: coarse) {
+            .catalog-card:hover .catalog-img img { transform: none; }
+        }
+    </style>
+</head>
+<body class="product-page-body">
+
+    <div class="ink-wrapper">
+        <div class="ink-blob b1"></div>
+        <div class="ink-blob b2"></div>
+        <div class="ink-blob b3"></div>
+    </div>
+
+    <nav>
+        <div class="logo">
+            <a href="index.html">
+                <img src="logo.png" alt="Gus&Co" class="nav-logo-img">
+            </a>
+        </div>
+        <div class="nav-links desktop-only">
+            <a href="index.html#story">L'Histoire</a>
+            <a href="index.html#drops">Drops</a>
+            <a href="index.html#collection">Collection</a>
+            <a href="produits.html" class="cta-nav" style="background: var(--text-main); color: #1a1a1a;">Shop</a>
+        </div>
+        <div class="hamburger-btn" aria-label="Ouvrir le menu" role="button" tabindex="0">
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="mobile-menu-overlay" id="menu-overlay"></div>
+    <div class="mobile-drawer" role="dialog" aria-modal="true">
+        <div class="drawer-header">
+            <img src="logo.png" alt="Gus&Co" class="drawer-logo">
+            <button class="drawer-close" id="drawer-close" aria-label="Fermer le menu">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+        </div>
+        <div class="mobile-links">
+            <a href="index.html#story" class="m-link">L'Histoire</a>
+            <a href="index.html#drops" class="m-link">Drops</a>
+            <a href="index.html#collection" class="m-link">Collection</a>
+            <a href="produits.html" class="m-link highlight">Shop</a>
+        </div>
+        <div class="mobile-footer">
+            <span>Gus&Co — 2026</span>
+        </div>
+    </div>
+
+    <section class="catalog-section">
+        <div class="catalog-header reveal-cat">
+            <h1>Shop</h1>
+            <p>Hiver 2026 — Toutes les pièces</p>
+        </div>
+        <div class="catalog-grid">
+            <a href="product-bonnet.html" class="catalog-card reveal-cat">
+                <div class="catalog-img">
+                    <img src="IMG_3590.jpeg" alt="Le Bonnet" loading="lazy">
+                </div>
+                <div class="catalog-info">
+                    <div class="info-left">
+                        <h3>Le Bonnet</h3>
+                        <span class="cat">Hiver 2026 — Pièce Unique</span>
+                    </div>
+                    <span class="catalog-price">20.00 €</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Animation spécifique catalogue (après script.js)
+        if (typeof gsap !== 'undefined') {
+            gsap.from(".reveal-cat", {
+                y: 40, opacity: 0, duration: 0.9, stagger: 0.1, ease: "power3.out", delay: 0.1
+            });
+        }
+        // Nav toujours solide sur les pages intérieures
+        const navEl = document.querySelector('nav');
+        if (navEl) navEl.classList.add('nav-scrolled');
+    </script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="logocoeur.png">
+    <link rel="apple-touch-icon" href="logocoeur.png">
+    <meta name="theme-color" content="#1a1a1a">
+    <meta name="description" content="Gus&Co — Shine like a star, live with your HEART.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Gus&Co">
+    <meta property="og:image" content="og-cover.jpg">
+    <meta property="og:url" content="https://gus-and-co.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="og-cover.jpg">
+    <meta property="og:title" content="Gus&Co | Vision Indépendante">
+    <meta property="og:description" content="Shine like a star, live with your HEART.">
+    <meta name="twitter:title" content="Gus&Co | Vision Indépendante">
+    <meta name="twitter:description" content="Shine like a star, live with your HEART.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Gus&Co | Vision Indépendante</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <canvas id="webgl-canvas"></canvas>
+
+    <div class="preloader">
+        <div class="loader-content">
+            <img src="logo.png" alt="Gus&Co" class="loader-logo-img">
+            <div class="loader-line"></div>
+        </div>
+    </div>
+
+    <nav>
+        <div class="logo">
+            <a href="index.html">
+                <img src="logo.png" alt="Gus&Co" class="nav-logo-img">
+            </a>
+        </div>
+        <div class="nav-links desktop-only">
+            <a href="#story">L'Histoire</a>
+            <a href="#drops">Drops</a>
+            <a href="#collection">Collection</a>
+            <a href="produits.html" class="cta-nav">Shop</a>
+        </div>
+        <div class="hamburger-btn" aria-label="Ouvrir le menu" role="button" tabindex="0">
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="mobile-menu-overlay" id="menu-overlay"></div>
+    <div class="mobile-drawer" role="dialog" aria-modal="true">
+        <div class="drawer-header">
+            <img src="logo.png" alt="Gus&Co" class="drawer-logo">
+            <button class="drawer-close" id="drawer-close" aria-label="Fermer le menu">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+        </div>
+        <div class="mobile-links">
+            <a href="#story" class="m-link">L'Histoire</a>
+            <a href="#drops" class="m-link">Drops</a>
+            <a href="#collection" class="m-link">Collection</a>
+            <a href="produits.html" class="m-link highlight">Shop</a>
+        </div>
+        <div class="mobile-footer">
+            <span>Gus&Co — 2026</span>
+        </div>
+    </div>
+
+    <header class="hero">
+        <video
+            id="hero-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+            src="hero-train3.mp4"
+        ></video>
+        <div class="hero-overlay"></div>
+        <div class="hero-scroll-hint">
+            <span>Scroll</span>
+            <div class="scroll-dot"></div>
+        </div>
+        <div class="hero-corner">
+            <span>Collection</span>
+            <span>Hiver 2026</span>
+        </div>
+        <div class="hero-corner-left">
+            <span>Streetwear Indépendant</span>
+        </div>
+    </header>
+
+    <main>
+        <section class="marquee-section">
+            <div class="marquee">
+                <div class="marquee-content">
+                    shine like a star, live with your heart  — 
+                    shine like a star, live with your heart  —
+                </div>
+            </div>
+        </section>
+
+        <section id="story" class="story-section">
+            <div class="story-container">
+                <div class="story-text">
+                    <span class="tiny-label">Origines</span>
+                    <h2>Du garage au showroom.</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+                    
+                </div>
+                <div class="story-image-wrap">
+                    <img src="IMG_3456.jpeg" alt="Gus&Co Story" class="story-img-landscape">
+                </div>
+            </div>
+        </section>
+
+        <section id="drops" class="drops-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="tiny-label">Calendrier</span>
+                    <h2>Prochains Drops</h2>
+                </div>
+                <div class="drop-list">
+                    <div class="drop-item">
+                        <span class="date">06.03</span>
+                        <span class="name">Le Bonnet</span>
+                        <span class="status">Disponible</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="collection" class="product-showcase">
+            <div class="container">
+                <h2 class="section-title">La Pièce du Moment</h2>
+                <div class="showcase-list">
+                    <article class="showcase-item">
+                        <div class="showcase-img reveal-img">
+                            <img src="IMG_3590.jpeg" alt="Le Bonnet" loading="lazy">
+                        </div>
+                        <div class="showcase-info reveal-info">
+                            <span class="p-cat">Hiver 2026 — Pièce Unique</span>
+                            <h3>Le Bonnet</h3>
+                            <p class="p-desc">Notre première pièce. Conçu pour durer, taillé pour marquer. Laine mérinos extra-fine, coupe ajustée. Le détail qui fait tout.</p>
+                            <div class="p-meta">
+                                <span class="price">20.00 €</span>
+                                <a href="product-bonnet.html" class="btn-underline">Voir la pièce →</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="center-btn" style="margin-top: 8rem;">
+                    <a href="produits.html" class="btn-main">Voir tout le Shop →</a>
+                </div>
+            </div>
+        </section>
+
+       <!--
+        <section class="newsletter-section">
+            <div class="newsletter-content">
+                <h2>Rejoindre le Club.</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <form class="news-form" onsubmit="return false;">
+                    <input type="email" placeholder="Votre email" autocomplete="email">
+                    <button type="submit">S'inscrire</button>
+                </form>
+            </div>
+        </section>
+        -->
+    </main>
+
+    <footer>
+        <div class="footer-main">
+            <div class="footer-col footer-col--brand">
+                <img src="logo.png" alt="Gus&Co" class="footer-logo-img">
+                <p class="footer-tagline">Streetwear indépendant.<br>Fabriqué pour durer.</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/gusandcobrand/" class="footer-social-link">Instagram ↗</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <span class="footer-col-title">Collection</span>
+                <a href="produits.html">Shop</a>
+                <a href="product-bonnet.html">Le Bonnet</a>
+            </div>
+            
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Gus&Co</span>
+        </div>
+    </footer>
+
+    <script>
+    // HERO VIDEO — Fade in propre
+    (function() {
+        const video = document.getElementById('hero-video');
+        if (!video) return;
+        video.addEventListener('canplay', () => { video.classList.add('loaded'); }, { once: true });
+        if (video.readyState >= 3) video.classList.add('loaded');
+        document.addEventListener('touchstart', () => { video.play().catch(() => {}); }, { once: true, passive: true });
+    })();
+
+    // NAV — Transparent → Solide au scroll
+    (function() {
+        const nav = document.querySelector('nav');
+        if (!nav) return;
+        const heroHeight = window.innerHeight * 0.85;
+        function updateNav() {
+            nav.classList.toggle('nav-scrolled', window.scrollY > heroHeight);
+        }
+        window.addEventListener('scroll', updateNav, { passive: true });
+        updateNav();
+    })();
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

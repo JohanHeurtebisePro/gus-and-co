@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="logocoeur.png">
+    <link rel="apple-touch-icon" href="logocoeur.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Gus&Co | Le Bonnet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .nav-logo-img { height: 55px; width: auto; display: block; }
+        @media (max-width: 768px) { .nav-logo-img { height: 44px; } }
+        @media (max-width: 480px) { .nav-logo-img { height: 38px; } }
+
+        /* Mobile : ordre texte → image → texte → image */
+        @media (max-width: 900px) {
+            .message-text--detail  { order: 1; }
+            .message-img-wrap--detail { order: 2; }
+            .message-text--msg     { order: 1; }
+            .message-img-wrap--msg { order: 2; }
+        }
+    </style>
+</head>
+<body class="product-page-body">
+
+    <div class="ink-wrapper">
+        <div class="ink-blob b1"></div>
+        <div class="ink-blob b2"></div>
+        <div class="ink-blob b3"></div>
+    </div>
+
+    <nav class="back-nav">
+        <a href="#" class="back-link" id="dynamic-back">← Retour</a>
+        <div class="logo">
+            <a href="index.html">
+                <img src="logo.png" alt="Gus&Co" class="nav-logo-img">
+            </a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="p-top-section">
+
+            <div class="p-gallery-grid">
+                <img src="IMG_3531.jpeg" alt="Les deux coloris">
+                <img src="IMG_3514.jpeg" alt="Détail — Le message">
+                <img src="IMG_3474.jpeg" alt="Vue Atelier">
+            </div>
+
+            <div class="p-info-sticky">
+                <h1 class="p-title">Le Bonnet</h1>
+                <span class="p-price">20.00 €</span>
+
+                <div class="stock-indicator">
+                    <span class="pulsing-dot"></span>
+                    <span class="stock-text">Première pièce. Stock très limité.</span>
+                </div>
+
+                <div class="stock-indicator" style="margin-top: 0.5rem;">
+                    <span class="stock-text" style="letter-spacing: 1px; text-transform: uppercase; font-size: 0.75rem;">Taille unique</span>
+                </div>
+
+                <p class="p-short-desc">
+                    Notre pièce inaugurale. Une silhouette simple, une matière qui parle seule.
+                    Mi-laine, mi-acrylique anti-boulochage — doux, résistant, et fait pour durer.
+                </p>
+
+                <a href="https://shop.gusandco.fr/products/le-bonnet" target="_blank" rel="noopener noreferrer" class="btn-external">Acheter la pièce ↗</a>
+                <span class="btn-subtext">Redirection sécurisée vers notre boutique.</span>
+            </div>
+        </section>
+
+        <section class="p-bottom-section">
+            <div class="lifestyle-banner reveal-on-scroll">
+                <img src="IMG_3456.jpeg" alt="Le Bonnet — Shooting Atelier" loading="lazy">
+                <div class="lifestyle-banner-caption">Shooting Atelier — Hiver 2026</div>
+            </div>
+
+            <div class="details-grid">
+                <div class="details-text reveal-on-scroll">
+                    <h2>La Première Pièce.</h2>
+                    <p>Chez Gus&Co, on commence par ce qui compte. Le bonnet n'est pas un accessoire — c'est le point de départ d'une silhouette. Celui-ci a été travaillé pendant des mois pour trouver la forme exacte : ni trop structuré, ni trop mou. Juste ce qu'il faut.</p>
+                    <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.95rem; line-height: 1.7;">Un mélange laine-acrylique pensé pour tenir dans le temps. Anti-boulochage, doux contre la peau, et assez robuste pour accompagner chaque hiver qui passe.</p>
+                </div>
+
+                <div class="accordion-wrapper reveal-on-scroll">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>Composition & Entretien</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>50% Laine, 50% Acrylique anti-boulochage. Lavage à la main, eau froide. Séchage à plat.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>Livraison</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Expédition sous 24h. Suivi inclus.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section Le Detail -->
+            <div class="message-section reveal-on-scroll">
+                <div class="message-text message-text--detail">
+                    <span class="tiny-label">Le Detail</span>
+                    <blockquote style="font-size: clamp(1.6rem, 3vw, 2.4rem);">Signature.</blockquote>
+                    <p>Le logo Gus&Co tissé directement dans la maille — pas imprimé, pas brodé en surface. Intégré. Une technique jacquard qui fait de chaque bonnet une pièce à part entière, reconnaissable sans avoir besoin de se justifier.</p>
+                    <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.9rem; line-height: 1.7;">C'est ce genre de détail qu'on ne voit qu'en vrai. La différence entre un bonnet qu'on porte et un bonnet qu'on garde.</p>
+                </div>
+                <div class="message-img-wrap message-img-wrap--detail">
+                    <img src="IMG_3498.jpeg" alt="Détail Jacquard — Gus&Co" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Section Le Message -->
+            <div class="message-section reveal-on-scroll">
+                <div class="message-img-wrap message-img-wrap--msg">
+                    <img src="IMG_3598.jpeg" alt="Shine like a star, live with your HEART" loading="lazy">
+                </div>
+                <div class="message-text message-text--msg">
+                    <span class="tiny-label">Le Message</span>
+                    <blockquote>"Shine like a star,<br>live with your HEART."</blockquote>
+                    <p>Pas un slogan. Une conviction. Brodée dans la laine pour ne jamais l'oublier.</p>
+                    <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.9rem; line-height: 1.7;">Chaque pièce Gus&Co porte quelque chose. Un mot, une phrase, une intention. Parce qu'un vêtement peut être bien plus qu'un vêtement — il peut te rappeler qui tu es, même les jours où tu l'oublies.</p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ============================================
+             GALERIE PHOTO
+             ============================================ -->
+        <section class="gallery-section">
+            <div class="gallery-header">
+                <div class="gallery-header-left">
+                    <span class="tiny-label">La Galerie</span>
+                    <h2 class="gallery-title">Le Bonnet en images.</h2>
+                </div>
+                <span class="gallery-count" id="gallery-count">09 photos</span>
+            </div>
+
+            <div class="gallery-grid">
+
+                <div class="gallery-item" data-index="0">
+                    <img src="IMG_3531.jpeg" alt="Les deux coloris — Vue d'ensemble" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <span class="gallery-item-num">01</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-index="1">
+                    <img src="IMG_3514.jpeg" alt="Détail broderie — Le message" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <span class="gallery-item-num">02</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-index="2">
+                    <img src="IMG_3474.jpeg" alt="Vue Atelier" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <span class="gallery-item-num">03</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-index="3">
+                    <img src="IMG_3456.jpeg" alt="Shooting Atelier — Hiver 2026" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <span class="gallery-item-num">04</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-index="4">
+                    <img src="IMG_3498.jpeg" alt="Détail Jacquard — Gus&Co" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <span class="gallery-item-num">05</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-index="5">
+                    <img src="IMG_3598.jpeg" alt="Shine like a star, live with your HEART" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <span class="gallery-item-num">06</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-index="6">
+                    <img src="IMG_3531.jpeg" alt="Coloris — Vue détail" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <span class="gallery-item-num">07</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-index="7">
+                    <img src="IMG_3474.jpeg" alt="Atelier — Ambiance" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <span class="gallery-item-num">08</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-index="8">
+                    <img src="IMG_3514.jpeg" alt="Le Bonnet porté" loading="lazy">
+                    <div class="gallery-item-overlay">
+                        <span class="gallery-item-num">09</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <div class="sticky-mobile-bar">
+        <div class="sticky-info">
+            <span>Le Bonnet</span>
+            <span class="sticky-price">20.00 €</span>
+        </div>
+        <a href="https://shop.gusandco.fr/products/le-bonnet" target="_blank" rel="noopener noreferrer" class="sticky-btn">Acheter ↗</a>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
