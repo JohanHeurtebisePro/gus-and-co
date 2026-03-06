@@ -23,267 +23,214 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-
-    <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-        :root {
-            --bg: #111111;
-            --text-main: #e8e0d0;
-            --text-muted: rgba(232, 224, 208, 0.45);
-            --border: rgba(232, 224, 208, 0.1);
-        }
-
-        html, body {
-            height: 100%;
-            background: var(--bg);
-            color: var(--text-main);
-            font-family: 'Space Grotesk', sans-serif;
-            overflow: hidden;
-        }
-
-        /* Ink blobs */
-        .ink-wrapper {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-        .ink-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.06;
-        }
-        .b1 { width: 700px; height: 700px; background: #e8e0d0; top: -200px; left: -200px; }
-        .b2 { width: 500px; height: 500px; background: #c8b89a; bottom: -100px; right: -100px; }
-        .b3 { width: 400px; height: 400px; background: #e8e0d0; top: 40%; left: 50%; transform: translate(-50%, -50%); }
-
-        /* Layout */
-        .coming-soon {
-            position: relative;
-            z-index: 1;
-            height: 100svh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .cs-logo {
-            height: 52px;
-            width: auto;
-            margin-bottom: 4rem;
-            opacity: 0;
-            animation: fadeUp 0.9s cubic-bezier(0.25, 1, 0.5, 1) 0.3s forwards;
-        }
-
-        .cs-label {
-            font-size: 0.72rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--text-muted);
-            margin-bottom: 1.8rem;
-            opacity: 0;
-            animation: fadeUp 0.9s cubic-bezier(0.25, 1, 0.5, 1) 0.5s forwards;
-        }
-
-        .cs-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.8rem, 8vw, 6rem);
-            font-weight: 400;
-            line-height: 1.1;
-            color: var(--text-main);
-            margin-bottom: 1.5rem;
-            opacity: 0;
-            animation: fadeUp 0.9s cubic-bezier(0.25, 1, 0.5, 1) 0.65s forwards;
-        }
-        .cs-title em {
-            font-style: italic;
-            color: rgba(232, 224, 208, 0.55);
-        }
-
-        .cs-time-wrap {
-            display: flex;
-            align-items: center;
-            gap: 1.4rem;
-            margin-bottom: 3.5rem;
-            opacity: 0;
-            animation: fadeUp 0.9s cubic-bezier(0.25, 1, 0.5, 1) 0.8s forwards;
-        }
-        .cs-line {
-            width: 40px;
-            height: 1px;
-            background: var(--border);
-        }
-        .cs-time {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(3.5rem, 12vw, 8rem);
-            font-weight: 600;
-            letter-spacing: -2px;
-            line-height: 1;
-        }
-
-        .cs-countdown {
-            display: flex;
-            align-items: flex-start;
-            gap: 2rem;
-            margin-bottom: 3.5rem;
-            opacity: 0;
-            animation: fadeUp 0.9s cubic-bezier(0.25, 1, 0.5, 1) 0.95s forwards;
-        }
-        .cd-block { text-align: center; }
-        .cd-num {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(1.6rem, 4vw, 2.2rem);
-            font-weight: 300;
-            display: block;
-            min-width: 2.5ch;
-            line-height: 1;
-            margin-bottom: 0.5rem;
-        }
-        .cd-label {
-            font-size: 0.62rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-muted);
-        }
-        .cd-sep {
-            font-size: clamp(1.6rem, 4vw, 2.2rem);
-            font-weight: 300;
-            color: var(--border);
-            line-height: 1;
-            animation: blink 1s step-end infinite;
-        }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-
-        .cs-sub {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            opacity: 0;
-            animation: fadeUp 0.9s cubic-bezier(0.25, 1, 0.5, 1) 1.1s forwards;
-        }
-        .cs-dot {
-            display: inline-block;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--text-main);
-            margin-right: 8px;
-            vertical-align: middle;
-            animation: pulse-dot 2s ease-in-out infinite;
-        }
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50%       { opacity: 0.3; transform: scale(0.6); }
-        }
-
-        .cs-footer {
-            position: fixed;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 2;
-            opacity: 0;
-            animation: fadeUp 0.9s cubic-bezier(0.25, 1, 0.5, 1) 1.3s forwards;
-        }
-        .cs-footer a {
-            font-size: 0.72rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .cs-footer a:hover { color: var(--text-main); }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(24px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 480px) {
-            .cs-logo { height: 40px; margin-bottom: 3rem; }
-            .cs-countdown { gap: 1.2rem; }
-            .cs-time-wrap { gap: 1rem; }
-            .cs-line { width: 20px; }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="ink-wrapper">
-        <div class="ink-blob b1"></div>
-        <div class="ink-blob b2"></div>
-        <div class="ink-blob b3"></div>
-    </div>
+    <canvas id="webgl-canvas"></canvas>
 
-    <div class="coming-soon">
-        <img src="logo.png" alt="Gus&Co" class="cs-logo">
-
-        <span class="cs-label">Premier Drop — Hiver 2026</span>
-
-        <h1 class="cs-title">Le site ouvre <em>ce soir.</em></h1>
-
-        <div class="cs-time-wrap">
-            <span class="cs-line"></span>
-            <span class="cs-time">20h00</span>
-            <span class="cs-line"></span>
+    <div class="preloader">
+        <div class="loader-content">
+            <img src="logo.png" alt="Gus&Co" class="loader-logo-img">
+            <div class="loader-line"></div>
         </div>
+    </div>
 
-        <div class="cs-countdown">
-            <div class="cd-block">
-                <span class="cd-num" id="cd-h">00</span>
-                <span class="cd-label">Heures</span>
-            </div>
-            <span class="cd-sep">:</span>
-            <div class="cd-block">
-                <span class="cd-num" id="cd-m">00</span>
-                <span class="cd-label">Minutes</span>
-            </div>
-            <span class="cd-sep">:</span>
-            <div class="cd-block">
-                <span class="cd-num" id="cd-s">00</span>
-                <span class="cd-label">Secondes</span>
-            </div>
+    <nav>
+        <div class="logo">
+            <a href="index.html">
+                <img src="logo.png" alt="Gus&Co" class="nav-logo-img">
+            </a>
         </div>
+        <div class="nav-links desktop-only">
+            <a href="#story">L'Histoire</a>
+            <a href="#drops">Drops</a>
+            <a href="#collection">Collection</a>
+            <a href="produits.html" class="cta-nav">Shop</a>
+        </div>
+        <div class="hamburger-btn" aria-label="Ouvrir le menu" role="button" tabindex="0">
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
 
-        <p class="cs-sub">
-            <span class="cs-dot"></span>
-            Le Bonnet — 20.00 €
-        </p>
+    <div class="mobile-menu-overlay" id="menu-overlay"></div>
+    <div class="mobile-drawer" role="dialog" aria-modal="true">
+        <div class="drawer-header">
+            <img src="logo.png" alt="Gus&Co" class="drawer-logo">
+            <button class="drawer-close" id="drawer-close" aria-label="Fermer le menu">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+        </div>
+        <div class="mobile-links">
+            <a href="#story" class="m-link">L'Histoire</a>
+            <a href="#drops" class="m-link">Drops</a>
+            <a href="#collection" class="m-link">Collection</a>
+            <a href="produits.html" class="m-link highlight">Shop</a>
+        </div>
+        <div class="mobile-footer">
+            <span>Gus&Co — 2026</span>
+        </div>
     </div>
 
-    <div class="cs-footer">
-        <a href="https://www.instagram.com/gusandcobrand/" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+    <header class="hero">
+        <video
+            id="hero-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+            src="hero-train3.mp4"
+        ></video>
+        <div class="hero-overlay"></div>
+        <div class="hero-scroll-hint">
+            <span>Scroll</span>
+            <div class="scroll-dot"></div>
+        </div>
+        <div class="hero-corner">
+            <span>Collection</span>
+            <span>Hiver 2026</span>
+        </div>
+        <div class="hero-corner-left">
+            <span>Streetwear Indépendant</span>
+        </div>
+    </header>
+
+    <main>
+        <section class="marquee-section">
+            <div class="marquee">
+                <div class="marquee-content">
+                    shine like a star, live with your heart  — 
+                    shine like a star, live with your heart  —
+                </div>
+            </div>
+        </section>
+
+        <section id="story" class="story-section">
+    <div class="story-container">
+        <div class="story-text">
+            <span class="tiny-label">Origines</span>
+            <h2>Du garage au showroom.</h2>
+            <p>
+                Gus&Co est né d’une passion pour la sape et le style. L’idée était simple : créer une marque qui reflète un état d’esprit et une identité forte.
+            </p>
+            <p>
+                Pensés pour être stylés, confortables et faciles à porter. Aujourd’hui, la marque grandit avec une ambition : proposer des pièces modernes inspirées du streetwear. Et ce n’est que le début.
+            </p>
+        </div>
+        <div class="story-image-wrap">
+            <img src="IMG_3456.jpeg" alt="Gus&Co Story" class="story-img-landscape">
+        </div>
     </div>
+</section>
+
+        <section id="drops" class="drops-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="tiny-label">Calendrier</span>
+                    <h2>Prochains Drops</h2>
+                </div>
+                <div class="drop-list">
+                    <div class="drop-item">
+                        <span class="date">06.03</span>
+                        <span class="name">Le Bonnet</span>
+                        <span class="status">Disponible</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="collection" class="product-showcase">
+            <div class="container">
+                <h2 class="section-title">La Pièce du Moment</h2>
+                <div class="showcase-list">
+                    <article class="showcase-item">
+                        <div class="showcase-img reveal-img">
+                            <img src="IMG_3590.jpeg" alt="Le Bonnet" loading="lazy">
+                        </div>
+                        <div class="showcase-info reveal-info">
+                            <span class="p-cat">Hiver 2026 — Pièce Unique</span>
+                            <h3>Le Bonnet</h3>
+                            <p class="p-desc">Notre première pièce. Conçu pour durer, taillé pour marquer. Laine mérinos extra-fine, coupe ajustée. Le détail qui fait tout.</p>
+                            <div class="p-meta">
+                                <span class="price">20.00 €</span>
+                                <a href="product-bonnet.html" class="btn-underline">Voir la pièce →</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="center-btn" style="margin-top: 8rem;">
+                    <a href="produits.html" class="btn-main">Voir tout le Shop →</a>
+                </div>
+            </div>
+        </section>
+
+       <!--
+        <section class="newsletter-section">
+            <div class="newsletter-content">
+                <h2>Rejoindre le Club.</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <form class="news-form" onsubmit="return false;">
+                    <input type="email" placeholder="Votre email" autocomplete="email">
+                    <button type="submit">S'inscrire</button>
+                </form>
+            </div>
+        </section>
+        -->
+    </main>
+
+    <footer>
+        <div class="footer-main">
+            <div class="footer-col footer-col--brand">
+                <img src="logo.png" alt="Gus&Co" class="footer-logo-img">
+                <p class="footer-tagline">Streetwear indépendant.<br>Fabriqué pour durer.</p>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/gusandcobrand/" class="footer-social-link">Instagram ↗</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <span class="footer-col-title">Collection</span>
+                <a href="produits.html">Shop</a>
+                <a href="product-bonnet.html">Le Bonnet</a>
+            </div>
+            
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Gus&Co</span>
+        </div>
+    </footer>
 
     <script>
-        function tick() {
-            const now = new Date();
-            const target = new Date();
-            target.setHours(20, 0, 0, 0);
+    // HERO VIDEO — Fade in propre
+    (function() {
+        const video = document.getElementById('hero-video');
+        if (!video) return;
+        video.addEventListener('canplay', () => { video.classList.add('loaded'); }, { once: true });
+        if (video.readyState >= 3) video.classList.add('loaded');
+        document.addEventListener('touchstart', () => { video.play().catch(() => {}); }, { once: true, passive: true });
+    })();
 
-            let diff = target - now;
-            if (diff < 0) diff = 0;
-
-            const h = Math.floor(diff / 1000 / 3600);
-            const m = Math.floor((diff / 1000 % 3600) / 60);
-            const s = Math.floor(diff / 1000 % 60);
-
-            document.getElementById('cd-h').textContent = String(h).padStart(2, '0');
-            document.getElementById('cd-m').textContent = String(m).padStart(2, '0');
-            document.getElementById('cd-s').textContent = String(s).padStart(2, '0');
+    // NAV — Transparent → Solide au scroll
+    (function() {
+        const nav = document.querySelector('nav');
+        if (!nav) return;
+        const heroHeight = window.innerHeight * 0.85;
+        function updateNav() {
+            nav.classList.toggle('nav-scrolled', window.scrollY > heroHeight);
         }
-        tick();
-        setInterval(tick, 1000);
+        window.addEventListener('scroll', updateNav, { passive: true });
+        updateNav();
+    })();
     </script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -294,5 +241,6 @@
       "sameAs": ["https://www.instagram.com/gusandcobrand/"]
     }
     </script>
+    <script src="script.js"></script>
 </body>
 </html>
