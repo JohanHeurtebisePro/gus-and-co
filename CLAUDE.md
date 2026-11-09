@@ -9,12 +9,13 @@ En ligne : https://gus-and-co.com · Instagram : https://www.instagram.com/gusan
 - Le site ne vend pas directement : « Acheter » renvoie vers la boutique Shopify, un produit par coloris :
   `https://drgj8a-g1.myshopify.com/products/bonnet-blanc-noir` (Blanc / Noir) et `…/products/bonnet-noir-et-blanc` (Noir / Blanc).
 - Une seule personne maintient le site. **Il est en production : `main` = ce qui est en ligne.**
+- La v2 du site sort le **1er décembre 2026**, avec le nouveau drop des bonnets. Le bandeau `.announce` (attribut `data-drop`) bascule automatiquement de « bientôt » à « disponible » à l'heure du drop.
 
 ## Stack
 
 - HTML / CSS / JS natifs, **sans build ni npm**.
 - Aucune bibliothèque JS : `assets/js/main.js` gère l'en-tête, les apparitions au défilement, le sélecteur de coloris et la visionneuse photo.
-- Google Fonts : Archivo (titres en largeur condensée, texte) et IBM Plex Mono (prix, infos).
+- Google Fonts : Inter Tight fin (logo GUS&CO en texte et grands titres, la plus proche de la typo de la nouvelle comm), Archivo (texte courant), IBM Plex Mono (prix, infos).
 
 ## Structure
 
@@ -25,7 +26,7 @@ product-bonnet.html            Fiche produit (sélecteur de coloris, galerie + v
 mentions-legales.html          Mentions légales (obligatoires)
 assets/css/main.css            Styles partagés (variables de thème dans :root)
 assets/js/main.js              JS partagé : chaque bloc vérifie que ses éléments existent
-assets/img/brand/              Logo (logo-wordmark.png), favicon
+assets/img/brand/              Favicon (le logo GUS&CO est du texte, classe .wordmark)
 assets/img/products/<produit>/ Photos produit
 assets/img/og-cover.jpg        Image de partage réseaux sociaux (1200×630)
 assets/video/                  Film d'accueil et son image d'attente (poster)
@@ -87,7 +88,9 @@ Puis http://localhost:8000. Après un déplacement de fichiers, recharger sans c
 
 ## Points connus (novembre 2026)
 
-- Refonte v2 (branche `feat/redesign-v2`) : textes et mentions légales contiennent des repères `[À compléter]` à remplir avant la mise en ligne.
+- Refonte v2 (branche `feat/redesign-v2`) : textes et mentions légales contiennent des repères `[À compléter]` à remplir avant la mise en ligne, dont l'heure exacte du drop (texte du bandeau et attribut `data-drop`).
+- Typo de la nouvelle comm pas encore identifiée : Inter Tight est un remplaçant provisoire. Si la vraie police est libre, remplacer `--font-display` ; sinon, utiliser un logo fourni en SVG.
+- Le film d'accueil (`hero.mp4`) montre encore l'ancien logo à empattements à partir de 6 s.
 - Pas de vidéo verticale : sur mobile, le film est affiché en entier (format cinéma) plutôt que recadré.
 - Photos non redimensionnées (ni WebP ni `srcset`).
 - Polices chargées depuis Google Fonts (adresse IP transmise à Google) : les héberger sur le site serait préférable pour le RGPD.

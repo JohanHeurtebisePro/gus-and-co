@@ -7,7 +7,7 @@ Le site présente la marque et ses pièces. La vente se fait sur la boutique Sho
 ## Technologies
 
 - HTML, CSS et JavaScript natifs, sans étape de build, sans bibliothèque ni dépendance à installer.
-- Polices : Archivo et IBM Plex Mono (Google Fonts).
+- Polices : Inter Tight, Archivo et IBM Plex Mono (Google Fonts).
 
 ## Structure
 
