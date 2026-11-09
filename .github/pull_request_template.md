@@ -33,6 +33,7 @@
 - [ ] Textes `alt` descriptifs sur les images
 
 ### Contenu
+- [ ] Aucun repère `[À compléter]` restant (`grep -rn 'class="todo"' *.html` ne renvoie rien)
 - [ ] Prix, composition, disponibilités et dates à jour
 - [ ] Textes relus
 

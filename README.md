@@ -6,19 +6,19 @@ Le site présente la marque et ses pièces. La vente se fait sur la boutique Sho
 
 ## Technologies
 
-- HTML, CSS et JavaScript natifs, sans étape de build ni dépendance à installer.
-- Animations : [GSAP](https://gsap.com/) + ScrollTrigger, [Lenis](https://github.com/darkroomengineering/lenis) (défilement fluide), [Three.js](https://threejs.org/) (fond animé de l'accueil), chargés depuis un CDN.
-- Polices : Space Grotesk et Playfair Display (Google Fonts).
+- HTML, CSS et JavaScript natifs, sans étape de build, sans bibliothèque ni dépendance à installer.
+- Polices : Archivo et IBM Plex Mono (Google Fonts).
 
 ## Structure
 
 ```
 index.html                 Accueil
-produits.html              Catalogue (Shop)
-product-bonnet.html        Fiche produit « Le Bonnet »
+produits.html              Shop
+product-bonnet.html        Fiche produit « Le bonnet »
+mentions-legales.html      Mentions légales
 assets/
-  css/style.css            Styles partagés
-  js/script.js             Scripts partagés
+  css/main.css             Styles partagés
+  js/main.js               Scripts partagés
   img/brand/               Logo et favicon
   img/products/<produit>/  Photos produit
   video/                   Vidéo de l'accueil
