@@ -1,6 +1,7 @@
 /* =========================================================
    Gus&Co — main stylesheet
-   Fonts: Archivo (variable width, display + text), IBM Plex Mono (meta)
+   Fonts: Inter Tight thin (wordmark + headings, closest free match to the
+   brand's new typeface), Archivo (text), IBM Plex Mono (meta)
    ========================================================= */
 
 :root {
@@ -12,6 +13,8 @@
     --ink: #0f0f0f;
 
     --font: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-display: 'Inter Tight', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --announce-h: 0px;
     --mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
     --gutter: clamp(1rem, 4vw, 3rem);
@@ -47,12 +50,11 @@ ul { list-style: none; }
 
 /* ---------- Typography ---------- */
 .display, h1, h2 {
-    font-family: var(--font);
-    font-stretch: 75%;
-    font-weight: 800;
+    font-family: var(--font-display);
+    font-weight: 200;
     text-transform: uppercase;
-    line-height: 0.95;
-    letter-spacing: -0.005em;
+    line-height: 1.02;
+    letter-spacing: 0.01em;
 }
 h1 { font-size: clamp(2.6rem, 7vw, 5.5rem); }
 h2 { font-size: clamp(2rem, 5vw, 3.75rem); }
@@ -113,7 +115,7 @@ mark.todo {
 
 /* ---------- Header ---------- */
 .site-header {
-    position: fixed; inset: 0 0 auto 0; z-index: 50;
+    position: fixed; inset: var(--announce-h) 0 auto 0; z-index: 50;
     height: var(--header-h);
     display: flex; align-items: center; justify-content: space-between; gap: 1rem;
     padding-inline: var(--gutter);
@@ -126,7 +128,11 @@ mark.todo {
     backdrop-filter: blur(10px);
     border-bottom-color: var(--line);
 }
-.brand img { width: clamp(92px, 11vw, 128px); height: auto; filter: invert(1); }
+.wordmark {
+    font-family: var(--font-display); font-weight: 300; text-transform: uppercase;
+    letter-spacing: 0.03em; line-height: 1; white-space: nowrap;
+}
+.brand { text-decoration: none; font-size: clamp(1.15rem, 1.8vw, 1.45rem); }
 .site-nav { display: flex; align-items: center; gap: clamp(0.9rem, 2.5vw, 2rem); }
 .site-nav a {
     font-family: var(--mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em;
@@ -153,7 +159,7 @@ mark.todo {
 
 /* Portrait screens: show the full 16:9 film, letterboxed, instead of cropping it */
 @media (max-aspect-ratio: 4/5) {
-    .hero { height: auto; min-height: 100svh; display: flex; flex-direction: column; justify-content: center; padding-top: var(--header-h); }
+    .hero { height: auto; min-height: 100svh; display: flex; flex-direction: column; justify-content: center; padding-top: calc(var(--announce-h) + var(--header-h)); }
     .hero-video { position: relative; inset: auto; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
     .hero-shade { display: none; }
     .hero-bottom { position: relative; flex-direction: column; align-items: flex-start; padding-block: 2rem; }
@@ -163,7 +169,7 @@ mark.todo {
 .marquee { overflow: hidden; border-block: 1px solid var(--line); padding-block: 1.1rem; }
 .marquee-track { display: flex; width: max-content; animation: marquee 40s linear infinite; }
 .marquee-track span {
-    font-stretch: 75%; font-weight: 700; text-transform: uppercase;
+    font-family: var(--font-display); font-weight: 200; text-transform: uppercase;
     font-size: clamp(1.4rem, 3vw, 2.2rem); white-space: nowrap; padding-right: 2.5rem; color: var(--muted);
 }
 @keyframes marquee { to { transform: translateX(-50%); } }
@@ -199,14 +205,14 @@ mark.todo {
 /* ---------- Footer ---------- */
 .site-footer { border-top: 1px solid var(--line); padding-block: 3rem 2rem; }
 .footer-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; }
-.footer-brand img { width: 150px; height: auto; filter: invert(1); margin-bottom: 1rem; }
+.footer-brand .wordmark { display: block; font-size: 2rem; font-weight: 200; margin-bottom: 1rem; }
 .footer-links { display: grid; gap: 0.5rem; }
 .footer-links a { text-decoration: none; opacity: 0.85; }
 .footer-links a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
 .footer-bottom { margin-top: 3rem; }
 
 /* ---------- Inner pages ---------- */
-.page { padding-top: calc(var(--header-h) + clamp(2rem, 6vw, 4rem)); padding-bottom: clamp(4rem, 8vw, 6rem); }
+.page { padding-top: calc(var(--announce-h) + var(--header-h) + clamp(2rem, 6vw, 4rem)); padding-bottom: clamp(4rem, 8vw, 6rem); }
 .page-head { margin-bottom: clamp(2rem, 4vw, 3rem); }
 .page-head h1 { margin-bottom: 0.75rem; }
 
@@ -218,7 +224,7 @@ mark.todo {
 .product-gallery > :first-child { grid-column: 1 / -1; }
 .product-gallery > :first-child img { aspect-ratio: 4 / 5; }
 
-.product-panel { position: sticky; top: calc(var(--header-h) + 1.5rem); display: grid; gap: 1.5rem; }
+.product-panel { position: sticky; top: calc(var(--announce-h) + var(--header-h) + 1.5rem); display: grid; gap: 1.5rem; }
 .product-panel h1 { font-size: clamp(2.6rem, 5vw, 4.25rem); }
 .price { font-family: var(--mono); font-size: 1.1rem; margin-top: 0.75rem; }
 
