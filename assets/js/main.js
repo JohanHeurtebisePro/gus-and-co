@@ -9,6 +9,24 @@
         window.addEventListener('scroll', update, { passive: true });
     }
 
+    // 1b. Drop announcement: switch from "coming soon" to "available" at the drop time
+    const announce = document.querySelector('[data-drop]');
+    if (announce) {
+        const dropAt = new Date(announce.dataset.drop).getTime();
+        const before = announce.querySelector('[data-drop-before]');
+        const after = announce.querySelector('[data-drop-after]');
+        const update = () => {
+            const isLive = Date.now() >= dropAt;
+            before.hidden = isLive;
+            after.hidden = !isLive;
+            return isLive;
+        };
+        if (!update()) {
+            const wait = dropAt - Date.now();
+            if (wait < 2 ** 31 - 1) setTimeout(update, wait); // setTimeout limit is ~24.8 days
+        }
+    }
+
     // 2. Reveal elements as they enter the viewport
     const reveals = document.querySelectorAll('.reveal');
     if ('IntersectionObserver' in window) {
