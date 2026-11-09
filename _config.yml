@@ -1,0 +1,7 @@
+# GitHub Pages (Jekyll) build settings.
+# The site is plain HTML/CSS/JS served from the repository root.
+# Everything listed below stays in the repository but is NOT published.
+exclude:
+  - archive/
+  - README.md
+  - CLAUDE.md

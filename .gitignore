@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Secrets and local environment
+.env
+.env.*
+
+# Jekyll local build output
+_site/
+.jekyll-cache/
+.sass-cache/
+
+# Node (in case a build step is added later)
+node_modules/
+
+# Claude Code local settings
+.claude/settings.local.json
+
+# Logs
+*.log
