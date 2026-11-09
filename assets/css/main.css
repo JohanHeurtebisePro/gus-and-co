@@ -1,6 +1,7 @@
 /* =========================================================
    Gus&Co — main stylesheet
-   Fonts: Archivo (variable width, display + text), IBM Plex Mono (meta)
+   Fonts (same as the original site): Playfair Display (headings),
+   Space Grotesk (text, meta)
    ========================================================= */
 
 :root {
@@ -11,8 +12,10 @@
     --muted: #8f8b84;
     --ink: #0f0f0f;
 
-    --font: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
-    --mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+    --font: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --font-meta: var(--font);
+    --announce-h: 0px;          /* set when the drop banner is present */
 
     --gutter: clamp(1rem, 4vw, 3rem);
     --max: 1320px;
@@ -47,19 +50,17 @@ ul { list-style: none; }
 
 /* ---------- Typography ---------- */
 .display, h1, h2 {
-    font-family: var(--font);
-    font-stretch: 75%;
-    font-weight: 800;
-    text-transform: uppercase;
-    line-height: 0.95;
-    letter-spacing: -0.005em;
+    font-family: var(--font-serif);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
 }
 h1 { font-size: clamp(2.6rem, 7vw, 5.5rem); }
 h2 { font-size: clamp(2rem, 5vw, 3.75rem); }
-h3 { font-size: 1.05rem; font-weight: 600; }
+h3 { font-size: 1.05rem; font-weight: 500; }
 
 .meta {
-    font-family: var(--mono);
+    font-family: var(--font-meta);
     font-size: 0.78rem;
     letter-spacing: 0.02em;
     color: var(--muted);
@@ -73,7 +74,7 @@ mark.todo {
     background: #ffe14d;
     color: #111;
     padding: 0 0.25em;
-    font-family: var(--mono);
+    font-family: var(--font-meta);
     font-size: 0.85em;
     border-radius: 2px;
 }
@@ -95,7 +96,7 @@ mark.todo {
 .btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 0.5em;
     padding: 0.95em 1.6em;
-    font-family: var(--mono); font-size: 0.82rem; font-weight: 500;
+    font-family: var(--font-meta); font-size: 0.82rem; font-weight: 500;
     text-transform: uppercase; letter-spacing: 0.06em; text-decoration: none;
     border: 1px solid var(--text);
     transition: background 0.25s, color 0.25s;
@@ -107,13 +108,13 @@ mark.todo {
 .btn-block { width: 100%; }
 
 .link-arrow {
-    font-family: var(--mono); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.04em;
+    font-family: var(--font-meta); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.04em;
     text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px;
 }
 
 /* ---------- Header ---------- */
 .site-header {
-    position: fixed; inset: 0 0 auto 0; z-index: 50;
+    position: fixed; inset: var(--announce-h) 0 auto 0; z-index: 50;
     height: var(--header-h);
     display: flex; align-items: center; justify-content: space-between; gap: 1rem;
     padding-inline: var(--gutter);
@@ -129,7 +130,7 @@ mark.todo {
 .brand img { width: clamp(92px, 11vw, 128px); height: auto; filter: invert(1); }
 .site-nav { display: flex; align-items: center; gap: clamp(0.9rem, 2.5vw, 2rem); }
 .site-nav a {
-    font-family: var(--mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em;
+    font-family: var(--font-meta); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em;
     text-decoration: none; color: var(--text); opacity: 0.8;
 }
 .site-nav a:hover, .site-nav a[aria-current="page"] { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
@@ -140,7 +141,7 @@ body:has(.announce) { --announce-h: 36px; }
     position: fixed; inset: 0 0 auto 0; z-index: 60; height: var(--announce-h);
     display: flex; align-items: center; justify-content: center; padding-inline: var(--gutter);
     background: var(--text); color: var(--ink);
-    font-family: var(--mono); font-size: clamp(0.66rem, 2.8vw, 0.75rem); text-transform: uppercase; letter-spacing: 0.04em;
+    font-family: var(--font-meta); font-size: clamp(0.66rem, 2.8vw, 0.75rem); text-transform: uppercase; letter-spacing: 0.04em;
     text-align: center;
 }
 .announce p { max-width: 100%; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -167,7 +168,7 @@ body:has(.announce) { --announce-h: 36px; }
 
 /* Portrait screens: show the full 16:9 film, letterboxed, instead of cropping it */
 @media (max-aspect-ratio: 4/5) {
-    .hero { height: auto; min-height: 100svh; display: flex; flex-direction: column; justify-content: center; padding-top: var(--header-h); }
+    .hero { height: auto; min-height: 100svh; display: flex; flex-direction: column; justify-content: center; padding-top: calc(var(--announce-h) + var(--header-h)); }
     .hero-video { position: relative; inset: auto; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
     .hero-shade { display: none; }
     .hero-bottom { position: relative; flex-direction: column; align-items: flex-start; padding-block: 2rem; }
@@ -177,7 +178,7 @@ body:has(.announce) { --announce-h: 36px; }
 .marquee { overflow: hidden; border-block: 1px solid var(--line); padding-block: 1.1rem; }
 .marquee-track { display: flex; width: max-content; animation: marquee 40s linear infinite; }
 .marquee-track span {
-    font-stretch: 75%; font-weight: 700; text-transform: uppercase;
+    font-family: var(--font-serif); font-weight: 400;
     font-size: clamp(1.4rem, 3vw, 2.2rem); white-space: nowrap; padding-right: 2.5rem; color: var(--muted);
 }
 @keyframes marquee { to { transform: translateX(-50%); } }
@@ -189,7 +190,7 @@ body:has(.announce) { --announce-h: 36px; }
 .card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease); }
 .card:hover .card-media img { transform: scale(1.03); }
 .card-info { display: flex; justify-content: space-between; gap: 1rem; padding-top: 0.9rem; }
-.card-info h3 { font-weight: 600; }
+.card-info h3 { font-weight: 500; }
 
 /* ---------- Story ---------- */
 .story { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 6rem); align-items: center; }
@@ -203,7 +204,7 @@ body:has(.announce) { --announce-h: 36px; }
 }
 .info-grid > div { padding: 1.5rem 1.5rem 1.5rem 0; }
 .info-grid > div + div { padding-left: 1.5rem; border-left: 1px solid var(--line); }
-.info-grid h3 { font-family: var(--mono); font-size: 0.78rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.5rem; }
+.info-grid h3 { font-family: var(--font-meta); font-size: 0.78rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.5rem; }
 .info-grid p { font-size: 0.92rem; color: #cfcac2; }
 
 /* ---------- Slogan band ---------- */
@@ -220,7 +221,7 @@ body:has(.announce) { --announce-h: 36px; }
 .footer-bottom { margin-top: 3rem; }
 
 /* ---------- Inner pages ---------- */
-.page { padding-top: calc(var(--header-h) + clamp(2rem, 6vw, 4rem)); padding-bottom: clamp(4rem, 8vw, 6rem); }
+.page { padding-top: calc(var(--announce-h) + var(--header-h) + clamp(2rem, 6vw, 4rem)); padding-bottom: clamp(4rem, 8vw, 6rem); }
 .page-head { margin-bottom: clamp(2rem, 4vw, 3rem); }
 .page-head h1 { margin-bottom: 0.75rem; }
 
@@ -232,9 +233,9 @@ body:has(.announce) { --announce-h: 36px; }
 .product-gallery > :first-child { grid-column: 1 / -1; }
 .product-gallery > :first-child img { aspect-ratio: 4 / 5; }
 
-.product-panel { position: sticky; top: calc(var(--header-h) + 1.5rem); display: grid; gap: 1.5rem; }
+.product-panel { position: sticky; top: calc(var(--announce-h) + var(--header-h) + 1.5rem); display: grid; gap: 1.5rem; }
 .product-panel h1 { font-size: clamp(2.6rem, 5vw, 4.25rem); }
-.price { font-family: var(--mono); font-size: 1.1rem; margin-top: 0.75rem; }
+.price { font-family: var(--font-meta); font-size: 1.1rem; margin-top: 0.75rem; }
 
 .colorway-picker { border: 0; }
 .colorway-picker legend { margin-bottom: 0.75rem; }
@@ -242,7 +243,7 @@ body:has(.announce) { --announce-h: 36px; }
 .swatch {
     display: inline-flex; align-items: center; gap: 0.6rem;
     padding: 0.6rem 0.9rem; border: 1px solid var(--line);
-    font-family: var(--mono); font-size: 0.82rem;
+    font-family: var(--font-meta); font-size: 0.82rem;
 }
 .swatch[aria-pressed="true"] { border-color: var(--text); }
 .swatch-dot { width: 14px; height: 14px; border-radius: 50%; border: 1px solid var(--muted); }
@@ -252,7 +253,7 @@ body:has(.announce) { --announce-h: 36px; }
 .note { margin-top: 0.6rem; }
 .specs { border-top: 1px solid var(--line); }
 .specs > div { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; padding-block: 0.85rem; border-bottom: 1px solid var(--line); font-size: 0.92rem; }
-.specs dt { font-family: var(--mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); padding-top: 0.15em; }
+.specs dt { font-family: var(--font-meta); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); padding-top: 0.15em; }
 
 /* ---------- Legal page ---------- */
 .legal { max-width: 46rem; }
@@ -271,7 +272,7 @@ body:has(.announce) { --announce-h: 36px; }
 .lightbox-stage { position: relative; height: 100%; min-height: 0; display: flex; align-items: center; justify-content: center; padding-inline: var(--gutter); }
 .lightbox-stage img { max-height: 100%; max-width: 100%; object-fit: contain; user-select: none; }
 .lightbox-nav { display: flex; justify-content: center; gap: 1rem; padding: 1rem; }
-.lightbox button { font-family: var(--mono); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.6rem 0.9rem; border: 1px solid var(--line); }
+.lightbox button { font-family: var(--font-meta); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.6rem 0.9rem; border: 1px solid var(--line); }
 .lightbox button:hover { border-color: var(--text); }
 
 /* ---------- Reveal on scroll (only when JS is running) ---------- */
