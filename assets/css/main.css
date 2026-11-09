@@ -174,15 +174,6 @@ body:has(.announce) { --announce-h: 36px; }
     .hero-bottom { position: relative; flex-direction: column; align-items: flex-start; padding-block: 2rem; }
 }
 
-/* ---------- Marquee ---------- */
-.marquee { overflow: hidden; border-block: 1px solid var(--line); padding-block: 1.1rem; }
-.marquee-track { display: flex; width: max-content; animation: marquee 40s linear infinite; }
-.marquee-track span {
-    font-family: var(--font-serif); font-weight: 400;
-    font-size: clamp(1.4rem, 3vw, 2.2rem); white-space: nowrap; padding-right: 2.5rem; color: var(--muted);
-}
-@keyframes marquee { to { transform: translateX(-50%); } }
-
 /* ---------- Product cards ---------- */
 .card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(0.75rem, 2vw, 1.5rem); }
 .card { display: block; text-decoration: none; }
@@ -309,7 +300,6 @@ body:has(.announce) { --announce-h: 36px; }
 
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .marquee-track { animation: none; }
     .js .reveal { opacity: 1; transform: none; transition: none; }
     .card-media img { transition: none; }
 }
