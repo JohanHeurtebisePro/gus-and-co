@@ -140,6 +140,20 @@ mark.todo {
 }
 .site-nav a:hover, .site-nav a[aria-current="page"] { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
 
+/* ---------- Drop announcement bar ---------- */
+body:has(.announce) { --announce-h: 36px; }
+.announce {
+    position: fixed; inset: 0 0 auto 0; z-index: 60; height: var(--announce-h);
+    display: flex; align-items: center; justify-content: center; padding-inline: var(--gutter);
+    background: var(--text); color: var(--ink);
+    font-family: var(--mono); font-size: clamp(0.66rem, 2.8vw, 0.75rem); text-transform: uppercase; letter-spacing: 0.04em;
+    text-align: center;
+}
+.announce p { max-width: 100%; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.announce a { text-decoration: none; }
+.announce a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.announce [hidden] { display: none; }
+
 /* ---------- Hero ---------- */
 .hero {
     position: relative; height: 100svh; min-height: 480px;
