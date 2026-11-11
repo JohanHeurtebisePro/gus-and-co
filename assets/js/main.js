@@ -9,18 +9,52 @@
         window.addEventListener('scroll', update, { passive: true });
     }
 
+    // 0. Stand-by screen before the drop (drop.js sets GUS_DROP_AT and the is-standby class).
+    //    Counts down, then reveals the site in place at the drop time, without a reload.
+    const root = document.documentElement;
+    const standby = document.querySelector('.standby');
+    if (standby && root.classList.contains('is-standby')) {
+        const video = standby.querySelector('.standby-video');
+        if (video && video.dataset.src) {
+            video.src = video.dataset.src; // loaded only while the stand-by screen is shown
+            video.play().catch(() => {});
+        }
+        const fields = ['d', 'h', 'm', 's'].map((k) => standby.querySelector(`[data-${k}]`));
+        const pad = (n) => String(n).padStart(2, '0');
+        let timer = null;
+        const tick = () => {
+            let left = Math.ceil((window.GUS_DROP_AT - Date.now()) / 1000); // reaches 0 exactly at the drop
+            if (left <= 0) {
+                if (timer) clearInterval(timer);
+                root.classList.remove('is-standby');
+                document.dispatchEvent(new Event('gus:drop')); // lets the announcement bar switch too
+                if (video) { video.pause(); video.removeAttribute('src'); video.load(); }
+                window.scrollTo(0, 0);
+                return;
+            }
+            const d = Math.floor(left / 86400); left -= d * 86400;
+            const h = Math.floor(left / 3600); left -= h * 3600;
+            const m = Math.floor(left / 60);
+            const values = [d, h, m, left - m * 60];
+            fields.forEach((el, i) => { el.textContent = pad(values[i]); });
+        };
+        tick();
+        if (root.classList.contains('is-standby')) timer = setInterval(tick, 1000);
+    }
+
     // 1b. Drop announcement: switch from "coming soon" to "available" at the drop time
     const announce = document.querySelector('[data-drop]');
     if (announce) {
-        const dropAt = new Date(announce.dataset.drop).getTime();
+        const dropAt = window.GUS_DROP_AT;
         const before = announce.querySelector('[data-drop-before]');
         const after = announce.querySelector('[data-drop-after]');
         const update = () => {
-            const isLive = Date.now() >= dropAt;
+            const isLive = Date.now() >= window.GUS_DROP_AT;
             before.hidden = isLive;
             after.hidden = !isLive;
             return isLive;
         };
+        document.addEventListener('gus:drop', update);
         if (!update()) {
             const wait = dropAt - Date.now();
             if (wait < 2 ** 31 - 1) setTimeout(update, wait); // setTimeout limit is ~24.8 days
