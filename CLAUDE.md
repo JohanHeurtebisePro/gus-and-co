@@ -5,7 +5,9 @@
 Site vitrine de **Gus&Co**, marque de streetwear indépendante. Slogan : « Shine like a star, live with your HEART. »
 En ligne : https://gus-and-co.com · Instagram : https://www.instagram.com/gusandcobrand/
 
-- Produit actuel : **Le Bonnet**, 20,00 €, taille unique, 2 coloris, 50 % laine / 50 % acrylique anti-boulochage.
+- Marque française créée par Augustin en 2025 (ne pas publier d'autres informations personnelles : ville, etc.).
+- Produit actuel : **Le Bonnet**, 20,00 €, taille unique, 2 coloris, 50 % laine / 50 % acrylique anti-boulochage, fabriqué en Chine.
+- Livraison avec suivi ; délais et tarifs affichés sur Shopify. Retours : 14 jours, via Instagram. Contact : Instagram uniquement.
 - Le site ne vend pas directement : « Acheter » renvoie vers la boutique Shopify, un produit par coloris :
   `https://drgj8a-g1.myshopify.com/products/bonnet-blanc-noir` (Blanc / Noir) et `…/products/bonnet-noir-et-blanc` (Noir / Blanc).
 - Une seule personne maintient le site. **Il est en production : `main` = ce qui est en ligne.**
@@ -88,7 +90,7 @@ Puis http://localhost:8000. Après un déplacement de fichiers, recharger sans c
 
 ## Points connus (novembre 2026)
 
-- Refonte v2 (branche `feat/redesign-v2`) : textes et mentions légales contiennent des repères `[À compléter]` à remplir avant la mise en ligne.
+- Mentions légales incomplètes : l'éditeur du site (nom, statut, adresse, SIRET, contact, directeur de la publication) n'y figure pas encore, à la demande du propriétaire. C'est une obligation légale en France : à compléter dès que possible.
 - Le film d'accueil (`hero.mp4`) montre encore l'ancien logo à empattements à partir de 6 s.
 - Pas de vidéo verticale : sur mobile, le film est affiché en entier (format cinéma) plutôt que recadré.
 - Photos non redimensionnées (ni WebP ni `srcset`).
