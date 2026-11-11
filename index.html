@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-standby="screen">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -22,8 +22,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <script>document.documentElement.classList.add('js');</script>
+    <link rel="stylesheet" href="assets/css/main.css?v=2.0.0">
+    <script src="assets/js/drop.js?v=2.0.0"></script>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -38,7 +38,30 @@
 </head>
 <body>
 
-    <div class="announce" data-drop="2026-12-01T20:00:00+01:00">
+    <div class="standby">
+        <video class="standby-video" data-src="assets/video/hero.mp4" poster="assets/video/hero-poster.jpg"
+               muted loop playsinline preload="none" aria-hidden="true"></video>
+        <header class="standby-top">
+            <img class="standby-logo" src="assets/img/brand/logo-wordmark.png" alt="Gus&amp;Co" width="640" height="147">
+            <span class="standby-label">Bientôt de nouveau disponible</span>
+        </header>
+        <div></div>
+        <section class="standby-bottom" aria-labelledby="standby-title">
+            <h1 id="standby-title" class="standby-title">Nouveau drop · 1er décembre, 20 h</h1>
+            <div class="countdown" role="timer" aria-label="Temps restant avant le drop">
+                <div><strong data-d>--</strong><span>Jours</span></div>
+                <div><strong data-h>--</strong><span>Heures</span></div>
+                <div><strong data-m>--</strong><span>Min</span></div>
+                <div><strong data-s>--</strong><span>Sec</span></div>
+            </div>
+            <div class="standby-foot">
+                <span class="standby-label">Shine like a star, live with your heart</span>
+                <a class="standby-link" href="https://www.instagram.com/gusandcobrand/" rel="noopener">Suivre le drop sur Instagram ↗</a>
+            </div>
+        </section>
+    </div>
+
+    <div class="announce" data-drop>
         <p data-drop-before>Nouveau drop le 1er décembre à 20 h</p>
         <p data-drop-after hidden><a href="product-bonnet.html">Nouveau drop disponible · Voir le bonnet →</a></p>
     </div>
@@ -149,6 +172,6 @@
         </div>
     </footer>
 
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js?v=2.0.0"></script>
 </body>
 </html>
