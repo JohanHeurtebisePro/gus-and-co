@@ -11,7 +11,7 @@ En ligne : https://gus-and-co.com · Instagram : https://www.instagram.com/gusan
 - Le site ne vend pas directement : « Acheter » renvoie vers la boutique Shopify, un produit par coloris :
   `https://drgj8a-g1.myshopify.com/products/bonnet-blanc-noir` (Blanc / Noir) et `…/products/bonnet-noir-et-blanc` (Noir / Blanc).
 - Une seule personne maintient le site. **Il est en production : `main` = ce qui est en ligne.**
-- La v2 du site sort le **1er décembre 2026 à 20 h** (heure de Paris), avec le nouveau drop des bonnets. Le bandeau `.announce` (attribut `data-drop`) bascule automatiquement de « bientôt » à « disponible » à l'heure du drop.
+- La v2 du site sort le **1er décembre 2026 à 20 h** (heure de Paris), avec le nouveau drop des bonnets. Elle est publiée à l'avance et se dévoile toute seule (voir « Drop et écran d'attente »).
 
 ## Stack
 
@@ -39,6 +39,14 @@ _config.yml                    Config Jekyll de GitHub Pages (fichiers exclus de
 
 Les pages HTML restent à la racine : leurs URL sont publiques (liens partagés, Google). Ne pas les renommer ni les déplacer sans plan de redirection.
 
+## Drop et écran d'attente
+
+- `assets/js/drop.js`, chargé dans le `<head>` de chaque page, contient **la seule définition de l'heure du drop** (`DROP_AT`).
+- Avant cette heure, selon l'attribut `<html data-standby>` : `screen` (accueil) affiche l'écran d'attente (film + compte à rebours) à la place du site ; `redirect` (Shop, fiche produit) renvoie vers l'accueil ; sans attribut (mentions légales), la page s'affiche normalement.
+- À l'heure du drop, `main.js` retire l'écran d'attente sans recharger la page, et le bandeau `.announce` passe à « disponible ».
+- Voir le vrai site avant l'heure : ajouter `?apercu` à l'URL (mémorisé pour l'onglet).
+- Après le drop : retirer l'écran d'attente (bloc `.standby`, styles et code associés, attributs `data-standby`) dans une PR de nettoyage.
+
 ## Lancer en local
 
 ```bash
@@ -60,6 +68,7 @@ Puis http://localhost:8000. Après un déplacement de fichiers, recharger sans c
 - Noms de fichiers : anglais, minuscules, kebab-case. Photos : `assets/img/products/<produit>/<produit>-<description>.jpeg`.
 - Chemins relatifs sans `/` initial (`assets/css/main.css`).
 - Tout le CSS dans `main.css` ; pas de `<style>` ni d'attribut `style` dans les pages.
+- Les liens vers `main.css`, `main.js` et `drop.js` portent un numéro de version (`?v=2.0.0`) : le changer dans les 4 pages à chaque modification de ces fichiers, sinon navigateurs et Cloudflare peuvent servir l'ancienne version jusqu'à 10 min.
 - JS : un seul `main.js`, sans dépendance ; tout bloc propre à une page commence par vérifier que ses éléments existent.
 - En-tête et pied de page sont copiés dans chaque page : toute modification doit être reportée dans les 4 pages.
 - Si une bibliothèque CDN devient nécessaire : version exacte, jamais `latest`.
