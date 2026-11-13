@@ -26,3 +26,6 @@ node_modules/
 
 # Claude Code local preview config (machine-specific)
 .claude/launch.json
+
+# Raw media dropped for review (not versioned, not published)
+assets/_inbox/
