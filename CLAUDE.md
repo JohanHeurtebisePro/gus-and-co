@@ -11,7 +11,7 @@ En ligne : https://gus-and-co.com · Instagram : https://www.instagram.com/gusan
 - Le site ne vend pas directement : « Acheter » renvoie vers la boutique Shopify, un produit par coloris :
   `https://drgj8a-g1.myshopify.com/products/bonnet-blanc-noir` (Blanc / Noir) et `…/products/bonnet-noir-et-blanc` (Noir / Blanc).
 - Une seule personne maintient le site. **Il est en production : `main` = ce qui est en ligne.**
-- La v2 du site sort le **1er décembre 2026 à 20 h** (heure de Paris), avec le nouveau drop des bonnets. Elle est publiée à l'avance et se dévoile toute seule (voir « Drop et écran d'attente »).
+- **En ligne jusqu'au drop : la page d'attente seule** (`index.html` + `standby.css`/`standby.js`, Shop et Bonnet redirigés). La v2 se prépare sur la branche locale `feat/redesign-v2` et sort le **1er décembre 2026 à 20 h** (heure de Paris), avec le nouveau drop des bonnets. Les sections « Structure » et « Drop et écran d'attente » décrivent la v2.
 
 ## Stack
 
