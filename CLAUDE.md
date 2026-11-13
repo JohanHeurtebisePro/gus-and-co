@@ -25,10 +25,11 @@ En ligne : https://gus-and-co.com · Instagram : https://www.instagram.com/gusan
 index.html                     Accueil (film, bonnet en 2 coloris, histoire, infos pratiques)
 produits.html                  Shop
 product-bonnet.html            Fiche produit (sélecteur de coloris, galerie + visionneuse)
+histoire.html                  L'histoire : manifeste d'Augustin + sens de l'emblème et du nom
 mentions-legales.html          Mentions légales (obligatoires)
 assets/css/main.css            Styles partagés (variables de thème dans :root)
 assets/js/main.js              JS partagé : chaque bloc vérifie que ses éléments existent
-assets/img/brand/              Logo (logo-wordmark.png), favicon
+assets/img/brand/              Logo (logo-wordmark.png), emblème étoile + cœur (emblem.png), favicon
 assets/img/products/<produit>/ Photos produit
 assets/img/og-cover.jpg        Image de partage réseaux sociaux (1200×630)
 assets/video/                  Film d'accueil et son image d'attente (poster)
@@ -69,9 +70,9 @@ Puis http://localhost:8000. Après un déplacement de fichiers, recharger sans c
 - Noms de fichiers : anglais, minuscules, kebab-case. Photos : `assets/img/products/<produit>/<produit>-<description>.jpeg`.
 - Chemins relatifs sans `/` initial (`assets/css/main.css`).
 - Tout le CSS dans `main.css` ; pas de `<style>` ni d'attribut `style` dans les pages.
-- Les liens vers `main.css`, `main.js` et `drop.js` portent un numéro de version (`?v=2.0.1`) : le changer dans les 4 pages à chaque modification de ces fichiers, sinon navigateurs et Cloudflare peuvent servir l'ancienne version jusqu'à 10 min.
+- Les liens vers `main.css`, `main.js` et `drop.js` portent un numéro de version (`?v=2.0.2`) : le changer dans les 5 pages à chaque modification de ces fichiers, sinon navigateurs et Cloudflare peuvent servir l'ancienne version jusqu'à 10 min.
 - JS : un seul `main.js`, sans dépendance ; tout bloc propre à une page commence par vérifier que ses éléments existent.
-- En-tête et pied de page sont copiés dans chaque page : toute modification doit être reportée dans les 4 pages.
+- En-tête et pied de page sont copiés dans chaque page : toute modification doit être reportée dans les 5 pages.
 - Si une bibliothèque CDN devient nécessaire : version exacte, jamais `latest`.
 - Textes : courts et factuels, sans formules creuses (« Pas X. Pas Y. Z. ») ; ne jamais inventer un fait (matière, délai, origine).
 - Un fait inconnu s'écrit `<mark class="todo">[À compléter : …]</mark>` (surligné en jaune). **Aucune page contenant `class="todo"` ne part en production** : vérifier avec `grep -rn 'class="todo"' *.html`.
@@ -101,6 +102,8 @@ Puis http://localhost:8000. Après un déplacement de fichiers, recharger sans c
 ## Points connus (novembre 2026)
 
 - Mentions légales incomplètes : l'éditeur du site (nom, statut, adresse, SIRET, contact, directeur de la publication) n'y figure pas encore, à la demande du propriétaire. C'est une obligation légale en France : à compléter dès que possible.
+- `emblem.png` a été extrait du visuel « Identité de marque » (traits rouges retirés) : le remplacer par le fichier source (SVG) dès que possible.
+- Identité : étoile = « Shine like a star », cœur = « Live with your heart », Gus = surnom d'Augustin, &Co = « compagnie » (toutes les personnes qui ont participé). Couleur d'accent des visuels : rouge. Le ® ne s'affiche que si la marque est déposée (non confirmé).
 - Le film d'accueil (`hero.mp4`) montre encore l'ancien logo à empattements à partir de 6 s.
 - Pas de vidéo verticale : sur mobile, le film est affiché en entier (format cinéma) plutôt que recadré.
 - Photos non redimensionnées (ni WebP ni `srcset`).
