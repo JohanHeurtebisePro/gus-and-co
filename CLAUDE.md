@@ -45,6 +45,7 @@ Les pages HTML restent à la racine : leurs URL sont publiques (liens partagés,
 - Avant cette heure, selon l'attribut `<html data-standby>` : `screen` (accueil) affiche l'écran d'attente (film + compte à rebours) à la place du site ; `redirect` (Shop, fiche produit) renvoie vers l'accueil ; sans attribut (mentions légales), la page s'affiche normalement.
 - À l'heure du drop, `main.js` retire l'écran d'attente sans recharger la page, et le bandeau `.announce` passe à « disponible ».
 - Voir le vrai site avant l'heure : ajouter `?apercu` à l'URL (mémorisé pour l'onglet).
+- En local (`localhost`), l'écran d'attente est ignoré pour pouvoir travailler ; ajouter `?attente` pour le tester.
 - Après le drop : retirer l'écran d'attente (bloc `.standby`, styles et code associés, attributs `data-standby`) dans une PR de nettoyage.
 
 ## Lancer en local
@@ -68,7 +69,7 @@ Puis http://localhost:8000. Après un déplacement de fichiers, recharger sans c
 - Noms de fichiers : anglais, minuscules, kebab-case. Photos : `assets/img/products/<produit>/<produit>-<description>.jpeg`.
 - Chemins relatifs sans `/` initial (`assets/css/main.css`).
 - Tout le CSS dans `main.css` ; pas de `<style>` ni d'attribut `style` dans les pages.
-- Les liens vers `main.css`, `main.js` et `drop.js` portent un numéro de version (`?v=2.0.0`) : le changer dans les 4 pages à chaque modification de ces fichiers, sinon navigateurs et Cloudflare peuvent servir l'ancienne version jusqu'à 10 min.
+- Les liens vers `main.css`, `main.js` et `drop.js` portent un numéro de version (`?v=2.0.1`) : le changer dans les 4 pages à chaque modification de ces fichiers, sinon navigateurs et Cloudflare peuvent servir l'ancienne version jusqu'à 10 min.
 - JS : un seul `main.js`, sans dépendance ; tout bloc propre à une page commence par vérifier que ses éléments existent.
 - En-tête et pied de page sont copiés dans chaque page : toute modification doit être reportée dans les 4 pages.
 - Si une bibliothèque CDN devient nécessaire : version exacte, jamais `latest`.
