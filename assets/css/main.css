@@ -183,6 +183,11 @@ body:has(.announce) { --announce-h: 36px; }
 .card-info { display: flex; justify-content: space-between; gap: 1rem; padding-top: 0.9rem; }
 .card-info h3 { font-weight: 500; }
 
+/* ---------- Campaign films ---------- */
+.campaign-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(0.75rem, 2vw, 1.5rem); }
+.campaign-video { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; background: var(--bg-raised); }
+@media (max-width: 760px) { .campaign-grid { grid-template-columns: 1fr; } }
+
 /* ---------- Story ---------- */
 .story { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 6rem); align-items: center; }
 .story-media img { width: 100%; aspect-ratio: 1; object-fit: cover; }
