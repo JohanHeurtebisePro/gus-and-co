@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="fr" data-standby="screen">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Gus&amp;Co · Shine like a star, live with your heart</title>
-    <meta name="description" content="Gus&amp;Co, marque de streetwear indépendante. Premier modèle : un bonnet en maille, en deux coloris, à 20 €.">
+    <title>Gus&amp;Co · Nouveau drop le 1er décembre à 20 h</title>
+    <meta name="description" content="Nouveau drop Gus&amp;Co le 1er décembre à 20 h : le bonnet revient, en blanc / noir et noir / blanc.">
     <link rel="canonical" href="https://gus-and-co.com/">
-    <meta name="theme-color" content="#0f0f0f">
+    <meta name="theme-color" content="#0b0b0b">
     <link rel="icon" type="image/png" href="assets/img/brand/favicon.png">
     <link rel="apple-touch-icon" href="assets/img/brand/favicon.png">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Gus&amp;Co">
     <meta property="og:locale" content="fr_FR">
-    <meta property="og:title" content="Gus&amp;Co · Shine like a star, live with your heart">
-    <meta property="og:description" content="Marque de streetwear indépendante. Premier modèle : le bonnet, en deux coloris.">
+    <meta property="og:title" content="Gus&amp;Co · Nouveau drop le 1er décembre à 20 h">
+    <meta property="og:description" content="Le bonnet revient, en blanc / noir et noir / blanc.">
     <meta property="og:url" content="https://gus-and-co.com/">
     <meta property="og:image" content="https://gus-and-co.com/assets/img/og-cover.jpg">
     <meta property="og:image:width" content="1200">
@@ -22,15 +22,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/main.css?v=2.0.0">
-    <script src="assets/js/drop.js?v=2.0.0"></script>
+    <link rel="stylesheet" href="assets/css/standby.css">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "ClothingStore",
       "name": "Gus&Co",
       "url": "https://gus-and-co.com/",
-      "logo": "https://gus-and-co.com/assets/img/brand/logo-wordmark.png",
       "slogan": "Shine like a star, live with your heart.",
       "sameAs": ["https://www.instagram.com/gusandcobrand/"]
     }
@@ -38,140 +36,39 @@
 </head>
 <body>
 
-    <div class="standby">
-        <video class="standby-video" data-src="assets/video/hero.mp4" poster="assets/video/hero-poster.jpg"
-               muted loop playsinline preload="none" aria-hidden="true"></video>
-        <header class="standby-top">
-            <img class="standby-logo" src="assets/img/brand/logo-wordmark.png" alt="Gus&amp;Co" width="640" height="147">
-            <span class="standby-label">Bientôt de nouveau disponible</span>
+    <main class="film">
+        <video class="film-video" src="assets/video/hero.mp4" poster="assets/video/hero-poster.jpg"
+               autoplay muted loop playsinline aria-hidden="true"></video>
+
+        <header class="film-top">
+            <img class="logo" src="assets/img/brand/logo-wordmark.png" alt="Gus&amp;Co" width="640" height="147">
+            <span class="label" data-state-label>Bientôt de nouveau disponible</span>
         </header>
+
         <div></div>
-        <section class="standby-bottom" aria-labelledby="standby-title">
-            <h1 id="standby-title" class="standby-title">Nouveau drop · 1er décembre, 20 h</h1>
-            <div class="countdown" role="timer" aria-label="Temps restant avant le drop">
+
+        <section class="film-bottom" aria-labelledby="drop-title">
+            <h1 id="drop-title" class="title" data-title>Nouveau drop · 1er décembre, 20 h</h1>
+
+            <div class="countdown" data-countdown data-target="2026-12-01T20:00:00+01:00" role="timer" aria-label="Temps restant avant le drop">
                 <div><strong data-d>--</strong><span>Jours</span></div>
                 <div><strong data-h>--</strong><span>Heures</span></div>
                 <div><strong data-m>--</strong><span>Min</span></div>
                 <div><strong data-s>--</strong><span>Sec</span></div>
             </div>
-            <div class="standby-foot">
-                <span class="standby-label">Shine like a star, live with your heart</span>
-                <a class="standby-link" href="https://www.instagram.com/gusandcobrand/" rel="noopener">Suivre le drop sur Instagram ↗</a>
+
+            <div class="live" data-live hidden>
+                <a class="btn" href="https://drgj8a-g1.myshopify.com/products/bonnet-blanc-noir">Bonnet Blanc / Noir ↗</a>
+                <a class="btn" href="https://drgj8a-g1.myshopify.com/products/bonnet-noir-et-blanc">Bonnet Noir / Blanc ↗</a>
             </div>
-        </section>
-    </div>
 
-    <div class="announce" data-drop>
-        <p data-drop-before>Nouveau drop le 1er décembre à 20 h</p>
-        <p data-drop-after hidden><a href="product-bonnet.html">Nouveau drop disponible · Voir le bonnet →</a></p>
-    </div>
-
-    <header class="site-header">
-        <a class="brand" href="index.html"><img src="assets/img/brand/logo-wordmark.png" alt="Gus&amp;Co, retour à l'accueil" width="640" height="147"></a>
-        <nav class="site-nav" aria-label="Navigation principale">
-            <a href="#bonnet">Le bonnet</a>
-            <a href="#histoire">L'histoire</a>
-            <a href="produits.html">Shop</a>
-        </nav>
-    </header>
-
-    <main>
-        <section class="hero" aria-label="Film de présentation Gus&amp;Co">
-            <video class="hero-video" src="assets/video/hero.mp4" poster="assets/video/hero-poster.jpg"
-                   autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
-            <div class="hero-shade"></div>
-            <div class="hero-bottom">
-                <p class="hero-slogan display">Shine like a star,<br>live with your heart.</p>
-                <a class="btn btn-ghost" href="#bonnet">Voir le bonnet</a>
-            </div>
-        </section>
-
-        <section id="bonnet" class="section">
-            <div class="container">
-                <div class="section-head reveal">
-                    <h2>Le bonnet</h2>
-                    <p class="meta">20 € · Taille unique · 2 coloris</p>
-                </div>
-                <div class="card-grid">
-                    <a class="card reveal" href="product-bonnet.html#blanc">
-                        <div class="card-media">
-                            <img src="assets/img/products/bonnet/bonnet-coloris.jpeg" alt="Bonnet blanc à inscriptions noires, porté de face" width="1288" height="1288" loading="lazy">
-                        </div>
-                        <div class="card-info"><h3>Blanc / Noir</h3><span class="meta">20 €</span></div>
-                    </a>
-                    <a class="card reveal" href="product-bonnet.html#noir">
-                        <div class="card-media">
-                            <img src="assets/img/products/bonnet/bonnet-message.jpeg" alt="Bonnet noir à inscriptions blanches, vu de dos" width="1288" height="1288" loading="lazy">
-                        </div>
-                        <div class="card-info"><h3>Noir / Blanc</h3><span class="meta">20 €</span></div>
-                    </a>
-                </div>
-                <div class="section-foot reveal">
-                    <p class="prose">Notre premier modèle. D'un côté, le slogan de la marque tricoté dans la maille ; de l'autre, « Gus and Co » et un cœur. 50 % laine, 50 % acrylique anti-boulochage.</p>
-                    <a class="link-arrow" href="product-bonnet.html">Voir la fiche du bonnet →</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="histoire" class="section">
-            <div class="container story">
-                <div class="story-media reveal">
-                    <img src="assets/img/products/bonnet/bonnet-shooting.jpeg" alt="Séance photo des premiers bonnets, dans une pièce sous les toits" width="1512" height="1512" loading="lazy">
-                </div>
-                <div class="story-text reveal">
-                    <h2>L'histoire</h2>
-                    <div class="prose">
-                        <p>Gus&amp;Co est une marque française, créée par Augustin en 2025.</p>
-                        <p>Le premier modèle est un bonnet. Les photos de ce site montrent les premiers exemplaires, tout juste sortis des cartons.</p>
-                        <p>« Shine like a star, live with your heart » : la phrase est tricotée sur chaque bonnet.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section section--tight" aria-labelledby="infos-title">
-            <div class="container">
-                <h2 id="infos-title" class="visually-hidden">Infos pratiques</h2>
-                <div class="info-grid reveal">
-                    <div>
-                        <h3>Livraison</h3>
-                        <p>Envoi avec suivi. Délais et tarifs indiqués sur notre boutique Shopify au moment de la commande.</p>
-                    </div>
-                    <div>
-                        <h3>Retours</h3>
-                        <p>14 jours pour changer d'avis après réception. Écrivez-nous sur Instagram pour organiser le retour.</p>
-                    </div>
-                    <div>
-                        <h3>Paiement</h3>
-                        <p>Commande et paiement sécurisés sur notre boutique Shopify.</p>
-                    </div>
-                    <div>
-                        <h3>Contact</h3>
-                        <p>Par message sur <a href="https://www.instagram.com/gusandcobrand/" rel="noopener">Instagram</a>.</p>
-                    </div>
-                </div>
+            <div class="film-foot">
+                <span class="label">Shine like a star, live with your heart</span>
+                <a class="link" href="https://www.instagram.com/gusandcobrand/" rel="noopener">Suivre le drop sur Instagram ↗</a>
             </div>
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-top">
-                <div class="footer-brand">
-                    <img src="assets/img/brand/logo-wordmark.png" alt="Gus&amp;Co" width="640" height="147" loading="lazy">
-                    <p class="meta">Shine like a star, live with your heart.</p>
-                </div>
-                <ul class="footer-links">
-                    <li><a href="produits.html">Shop</a></li>
-                    <li><a href="product-bonnet.html">Le bonnet</a></li>
-                    <li><a href="https://www.instagram.com/gusandcobrand/" rel="noopener">Instagram ↗</a></li>
-                    <li><a href="mentions-legales.html">Mentions légales</a></li>
-                </ul>
-            </div>
-            <p class="footer-bottom meta">© 2026 Gus&amp;Co</p>
-        </div>
-    </footer>
-
-    <script src="assets/js/main.js?v=2.0.0"></script>
+    <script src="assets/js/standby.js"></script>
 </body>
 </html>
