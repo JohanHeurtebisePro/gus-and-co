@@ -77,6 +77,24 @@
         reveals.forEach((el) => el.classList.add('is-visible'));
     }
 
+    // 2b. Campaign films: load on first view, play only while visible (reduced motion: controls, no autoplay)
+    const films = document.querySelectorAll('.campaign-video');
+    if (films.length) {
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const load = (v) => { if (!v.src && v.dataset.src) v.src = v.dataset.src; };
+        if (reduceMotion || !('IntersectionObserver' in window)) {
+            films.forEach((v) => { v.controls = true; v.preload = 'metadata'; load(v); });
+        } else {
+            const filmObserver = new IntersectionObserver((entries) => {
+                entries.forEach(({ target, isIntersecting }) => {
+                    if (isIntersecting) { load(target); target.play().catch(() => {}); }
+                    else if (!target.paused) target.pause();
+                });
+            }, { threshold: 0.35 });
+            films.forEach((v) => filmObserver.observe(v));
+        }
+    }
+
     // 3. Hero video: retry playback on first touch (iOS low-power mode blocks autoplay)
     const heroVideo = document.querySelector('.hero-video');
     if (heroVideo) {
