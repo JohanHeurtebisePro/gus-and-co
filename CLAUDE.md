@@ -70,7 +70,7 @@ Puis http://localhost:8000. Après un déplacement de fichiers, recharger sans c
 - Noms de fichiers : anglais, minuscules, kebab-case. Photos : `assets/img/products/<produit>/<produit>-<description>.jpeg`.
 - Chemins relatifs sans `/` initial (`assets/css/main.css`).
 - Tout le CSS dans `main.css` ; pas de `<style>` ni d'attribut `style` dans les pages.
-- Les liens vers `main.css`, `main.js` et `drop.js` portent un numéro de version (`?v=2.0.3`) : le changer dans les 5 pages à chaque modification de ces fichiers, sinon navigateurs et Cloudflare peuvent servir l'ancienne version jusqu'à 10 min.
+- Les liens vers `main.css`, `main.js` et `drop.js` portent un numéro de version (`?v=2.0.4`) : le changer dans les 5 pages à chaque modification de ces fichiers, sinon navigateurs et Cloudflare peuvent servir l'ancienne version jusqu'à 10 min.
 - JS : un seul `main.js`, sans dépendance ; tout bloc propre à une page commence par vérifier que ses éléments existent.
 - En-tête et pied de page sont copiés dans chaque page : toute modification doit être reportée dans les 5 pages.
 - Si une bibliothèque CDN devient nécessaire : version exacte, jamais `latest`.
@@ -105,7 +105,7 @@ Puis http://localhost:8000. Après un déplacement de fichiers, recharger sans c
 - `emblem.png` a été extrait du visuel « Identité de marque » (traits rouges retirés) : le remplacer par le fichier source (SVG) dès que possible.
 - Identité : étoile = « Shine like a star », cœur = « Live with your heart », Gus = surnom d'Augustin, &Co = « compagnie » (toutes les personnes qui ont participé). Couleur d'accent des visuels : rouge. Le ® ne s'affiche que si la marque est déposée (non confirmé).
 - Les films de campagne viennent d'Instagram (recompressés, carton final coupé, bande-son retirée car la musique Instagram n'est pas utilisable sur le site) : à remplacer par les fichiers originaux du créateur. Fichiers bruts à déposer dans `assets/_inbox/` (ignoré par Git et non publié).
-- Pas de vidéo verticale : sur mobile, le film est affiché en entier (format cinéma) plutôt que recadré.
+- Sur mobile (écran en hauteur), le film d'accueil remplit l'écran, recadré au centre : une version verticale fournie par le créateur serait plus nette.
 - Photos non redimensionnées (ni WebP ni `srcset`).
 - Polices chargées depuis Google Fonts (adresse IP transmise à Google) : les héberger sur le site serait préférable pour le RGPD.
 - La meilleure photo de face du bonnet noir n'existe que sur la boutique Shopify.
