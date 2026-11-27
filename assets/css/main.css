@@ -166,12 +166,17 @@ body:has(.announce) { --announce-h: 36px; }
 }
 .hero-slogan { font-size: clamp(1.6rem, 3.6vw, 2.8rem); }
 
-/* Portrait screens: show the full 16:9 film, letterboxed, instead of cropping it */
+/* Portrait screens (phones): the film fills the whole screen, cropped around its centre
+   (the Gus&Co sign stays in frame on every shot); slogan and button sit at the bottom */
 @media (max-aspect-ratio: 4/5) {
-    .hero { height: auto; min-height: 100svh; display: flex; flex-direction: column; justify-content: center; padding-top: calc(var(--announce-h) + var(--header-h)); }
-    .hero-video { position: relative; inset: auto; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
-    .hero-shade { display: none; }
-    .hero-bottom { position: relative; flex-direction: column; align-items: flex-start; padding-block: 2rem; }
+    .hero-video { object-position: 50% 50%; }
+    .hero-shade {
+        background: linear-gradient(to bottom, rgba(0,0,0,0.45), rgba(0,0,0,0) 25%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.75));
+    }
+    .hero-bottom {
+        flex-direction: column; align-items: flex-start; gap: 1.25rem;
+        padding-bottom: calc(var(--gutter) + env(safe-area-inset-bottom, 0px) + 0.5rem);
+    }
 }
 
 /* ---------- Product cards ---------- */
